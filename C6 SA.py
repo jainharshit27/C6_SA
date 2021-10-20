@@ -5,6 +5,7 @@ pygame.init()
 screen = pygame.display.set_mode((1200, 400))
 
 game_state = "play"
+#Create variable dino_state with value "run" assigned to it.
 
 score = 0
 score_font = pygame.font.Font("freesansbold.ttf", 16)
@@ -20,15 +21,16 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-            sys.exit()
         
         if game_state == "play":
+            #Check if dino_state is set to "run" here. Indent the next 3 lines.
             if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_SPACE:
-                        dino_y_change = -1
+                if event.key == pygame.K_SPACE:
+                    dino_y_change = -1
+            #Check if dino_state is set to "jump" here. Indent the next 3 lines.
             if event.type == pygame.KEYUP:
-                    if event.key == pygame.K_SPACE:
-                        dino_y_change = 1
+                if event.key == pygame.K_SPACE:
+                    dino_y_change = 1
                         
         if game_state == "over":
             if event.type == pygame.KEYDOWN:
@@ -41,9 +43,12 @@ while True:
     if game_state == "play":
         dino_rect.y += dino_y_change
         if dino_rect.y > 250:
+            #Set dino_state = "run"
             dino_rect.y = 250
         if dino_rect.y < 100:
+            #Set dino_state = "jump"
             dino_rect.y = 100
+            #Set dino_y_change = 1
         
         cactus_rect.x = cactus_rect.x - 1
         if cactus_rect.x <= -30:
